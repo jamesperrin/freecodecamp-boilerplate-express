@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 
+const absolutPath = __dirname;
+app.use(express.static(`${absolutPath}`));
+
 app.get('/', (req, res) => {
-  const absolutPath = `${__dirname}/views/index.html`;
-  res.sendFile(absolutPath);
+  res.sendFile(`${absolutPath}/views/index.html`);
 });
 
  module.exports = app;
