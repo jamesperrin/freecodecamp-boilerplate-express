@@ -4,6 +4,11 @@ const app = express();
 const absolutPath = __dirname;
 app.use(express.static(`${absolutPath}`));
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);  
+  next();
+});
+
 app.get('/', (req, res) => {
   res.sendFile(`${absolutPath}/views/index.html`);
 });
